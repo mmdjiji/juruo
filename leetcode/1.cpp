@@ -1,14 +1,12 @@
 class Solution {
 public:
-  vector<int> twoSum(vector<int>& nums, int target) {
-    unordered_map<int, int> hashmap;
-    for(int i=0; i<nums.size(); ++i) {
-      int another = target - nums[i];
-      unordered_map<int, int>::iterator it = hashmap.find(another);
-      if(it != hashmap.end()) {
-        return { it->second, i };
+  vector<int> twoSum(vector<int> &nums, int target) {
+    unordered_map<int, int> map;
+    for (int i = 0; i < nums.size(); ++i) {
+      if (map.find(target - nums[i]) != map.end()) {
+        return {i, map[target - nums[i]]};
       }
-      hashmap[nums[i]] = i;
+      map[nums[i]] = i;
     }
     return {};
   }
